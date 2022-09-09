@@ -2,6 +2,7 @@
 
 En este lab vamos a reforzar tanto la validación de formularios cómo la comunicación entre componentes padre <> hijo.
 
+[App Demo](https://ironptsolutions.github.io/react-forms-lab/index.html)
 
 # Iteración 1
 
