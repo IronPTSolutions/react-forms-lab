@@ -1,0 +1,14 @@
+.event h3 {
+  font-size: 22px;
+  position: relative;
+}
+
+.event .date {
+  top: 10px;
+  left: 10px;
+}
+
+.event .actions {
+  top: 5px;
+  right: 10px;
+}
