@@ -24,6 +24,7 @@ Trabajaremos en el componente `./src/components/events/event-form.js`:
 Una vez se hace submit del formulário tenemos que emitir un evento `onCreatedEvent` que envíe el evento al componente padre, deberá añadir un campo `id` al evento antes de enviarlo,
 usad la siguiente [librería](https://www.npmjs.com/package/uuid) para generar uuids.
 
+> Acordaros de no intentar hacer toooodos los inputs a la vez, primero uno, con todo controlado y el resto saldrán solos 😎
 
 # Iteración 2
 
