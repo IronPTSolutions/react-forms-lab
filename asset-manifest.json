@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "https://ironptsolutions.github.io/react-forms-lab/static/css/main.d56ad7bf.css",
+    "main.js": "https://ironptsolutions.github.io/react-forms-lab/static/js/main.042433d3.js",
+    "static/js/787.e3c1a8b6.chunk.js": "https://ironptsolutions.github.io/react-forms-lab/static/js/787.e3c1a8b6.chunk.js",
+    "index.html": "https://ironptsolutions.github.io/react-forms-lab/index.html",
+    "main.d56ad7bf.css.map": "https://ironptsolutions.github.io/react-forms-lab/static/css/main.d56ad7bf.css.map",
+    "main.042433d3.js.map": "https://ironptsolutions.github.io/react-forms-lab/static/js/main.042433d3.js.map",
+    "787.e3c1a8b6.chunk.js.map": "https://ironptsolutions.github.io/react-forms-lab/static/js/787.e3c1a8b6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d56ad7bf.css",
+    "static/js/main.042433d3.js"
+  ]
+}
