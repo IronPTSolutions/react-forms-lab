@@ -1,8 +1,12 @@
 import React from 'react'
+import EventForm from '../event-form/EventForm'
 
 function EventList() {
   return (
-    <div>EventList</div>
+    <div>
+      <EventForm />
+    </div>
+    
   )
 }
 
