@@ -1,0 +1,19 @@
+.image-icon {
+  max-width: 100%;
+  max-height: 150px;
+}
+.delete-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.like-icon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+.date-icon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
