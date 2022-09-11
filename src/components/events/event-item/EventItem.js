@@ -1,8 +1,8 @@
 import React from 'react'
 
-function EventItem() {
+function EventItem({ title, id }) {
   return (
-    <div>EventItem</div>
+    <li>{title} {id}</li>
   )
 }
 
