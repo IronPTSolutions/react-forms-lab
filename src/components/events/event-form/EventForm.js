@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
+import moment from "moment";
 
 const validations = {
   title: (value) => {
@@ -13,8 +14,8 @@ const validations = {
     let message;
     if (!value) {
       message = "Event date is required";
-    } else if (new Date() >= new Date(value)) {
-      message = "Carallo";
+    } else if (moment(value).endOf("day").isBefore(moment.now())) {
+      message = "Date can not be in the past";
     }
     return message;
   },
@@ -22,6 +23,12 @@ const validations = {
     let message;
     if (!value) {
       message = "Event poster is required";
+    } else {
+      try {
+        new URL(value);
+      } catch (error) {
+        message = "Invalid url";
+      }
     }
     return message;
   },
@@ -46,7 +53,7 @@ const initialState = {
   },
 };
 
-function EventForm({onCreatedEvent}) {
+function EventForm({ onCreatedEvent }) {
   const [state, setState] = useState(initialState);
 
   const handleChange = (e) => {
@@ -81,16 +88,17 @@ function EventForm({onCreatedEvent}) {
     });
   };
 
-  const isValid = () => !Object.keys(state.errors).some(error => state.errors[error])
+  const isValid = () =>
+    !Object.keys(state.errors).some((error) => state.errors[error]);
 
-const handleSubmit = (e) => {
-  e.preventDefault()
-  if (isValid()) {
-    const { event } = state;
-    onCreatedEvent({...event, id: uuid()})
-    setState(initialState)
-  }
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isValid()) {
+      const { event } = state;
+      onCreatedEvent({ ...event, id: uuid() });
+      setState(initialState);
+    }
+  };
 
   const { event, touch, errors } = state;
 
@@ -107,7 +115,9 @@ const handleSubmit = (e) => {
             value={event.title}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={`form-control ${errors.title && touch.title ? "is-invalid" : ""}`}
+            className={`form-control ${
+              errors.title && touch.title ? "is-invalid" : ""
+            }`}
             placeholder="Event title"
           />
           {errors.title && (
@@ -124,7 +134,9 @@ const handleSubmit = (e) => {
             value={event.date}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={`form-control ${errors.date && touch.date ? "is-invalid" : ""}`}
+            className={`form-control ${
+              errors.date && touch.date ? "is-invalid" : ""
+            }`}
             placeholder="Event date"
           />
           {errors.date && <div className="invalid-feedback">{errors.date}</div>}
@@ -139,10 +151,14 @@ const handleSubmit = (e) => {
             value={event.poster}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={`form-control ${errors.poster && touch.poster ? "is-invalid" : ""}`}
+            className={`form-control ${
+              errors.poster && touch.poster ? "is-invalid" : ""
+            }`}
             placeholder="Event poster"
           />
-          <button className="btn btn-outline-primary btn-fw" type="submit">Create event</button>
+          <button className="btn btn-outline-primary btn-fw" type="submit">
+            Create event
+          </button>
           {errors.poster && (
             <div className="invalid-feedback">{errors.poster}</div>
           )}

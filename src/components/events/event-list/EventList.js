@@ -5,7 +5,8 @@ import eventData from "../../../data/event";
 
 function EventList() {
   const [events, setEvents] = useState(eventData);
-  console.log(eventData)
+
+  
 
   const handleCreatedEvent = (event) => {
     setEvents((events) => {

@@ -2,7 +2,7 @@ import React from 'react'
 
 function EventItem({ title, id }) {
   return (
-    <li>{title} {id}</li>
+    <li>{title}</li>
   )
 }
 
