@@ -6,7 +6,7 @@ import eventData from "../../../data/event";
 function EventList() {
   const [events, setEvents] = useState(eventData);
 
-  
+
 
   const handleCreatedEvent = (event) => {
     setEvents((events) => {
@@ -14,14 +14,27 @@ function EventList() {
     });
   };
 
+  const handleDeleteEvent = (id) => {
+    setEvents((events) => [...events].filter((event) => event.id !== id))
+  }
+
+  const handleLikeEvent = (id) => {
+    setEvents((events) => {
+      return [...events]
+    })
+  }
+
   return (
     <>
       <EventForm onCreatedEvent={handleCreatedEvent} />
-      <ul className="list-group">
+      <hr />
+      <div className="container">
+      <div className="d-flex justify-content-between">
         {events.map((event) => (
-          <EventItem key={event.id} {...event} />
+          <EventItem key={event.id} {...event} onDeletedEvent={handleDeleteEvent} onLikedEvent={handleLikeEvent} className="mx-2"/>
         ))}
-      </ul>
+         </div>
+      </div>
     </>
   );
 }
