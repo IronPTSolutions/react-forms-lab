@@ -18,11 +18,15 @@ function EventList() {
     setEvents((events) => [...events].filter((event) => event.id !== id))
   }
 
-  const handleLikeEvent = (id) => {
-    setEvents((events) => {
-      return [...events]
+  const handleLikeEvent =  (id) => setEvents((events) => {
+    return events.map((event) => {
+      event = {...event};
+      if (event.id === id) {
+        event.liked = !event.liked;
+      }
+      return event;
     })
-  }
+  });
 
   return (
     <>
