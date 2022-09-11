@@ -1,0 +1,19 @@
+.container-img {
+  position: relative;
+  width: 200px;
+  height: 150px;
+}
+.event {
+  width: 200px;
+  position: relative;
+}
+
+.event .date {
+  top: 10px;
+  left: 10px;
+}
+
+.event .actions {
+  top: 125px;
+  right: 10px;
+}
