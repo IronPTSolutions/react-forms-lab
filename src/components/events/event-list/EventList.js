@@ -16,7 +16,7 @@ function EventList() {
 
   const handleCreateEvent = (e) => {
     setEvents(events => [...events, e])
-    console.log(events)}
+  }
 
   return (
     <>
@@ -25,10 +25,10 @@ function EventList() {
         <EventForm className="col-9" onCreateEvent={handleCreateEvent}/>
       </div>
       <hr />
-        <div className='row'>
+      {events.length !== 0 ? (<div className='row'>
           {events.map((event) => (
             <EventItem key={event.id} {...event} onDeleteEvent={handleDeleteEvent}/> ))}
-        </div>
+        </div>) : (<h2 className='text-center mt-5'>Oops, any event to show...</h2>)}        
     </>
   )
 }

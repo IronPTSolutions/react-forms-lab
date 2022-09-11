@@ -1,10 +1,20 @@
-import EventList from "./components/events/event-list/EventList";
+import { Route, Routes } from "react-router-dom"
+import Home from "./screens/Home";
+import DetailScreen from "./screens/DetailScreen";
+import Navbar from "./components/ui/Navbar";
 
 function App() {
   return (
-    <div className="container py-5">
-      <EventList />
-    </div>
+    <>
+      <Navbar />
+
+      <div className="container py-3">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/detail/:id" element={<DetailScreen />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 

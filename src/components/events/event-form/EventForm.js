@@ -90,7 +90,6 @@ function EventForm({ className, onCreateEvent }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(event)
     if (isValid()) {
       onCreateEvent({...event, id: uuid()})
       setState(initialState)
@@ -99,10 +98,6 @@ function EventForm({ className, onCreateEvent }) {
 
   const { event, errors, touch } = state;
   
-  // console.log("name: " + state.event.title)
-  // console.log("touch: " + state.touch.title)
-  // console.log("errort: " + state.errors.title)
-  // console.log("errord: " + state.errors.date)
   return (
     <>
       <EventItem {...state.event}/>
