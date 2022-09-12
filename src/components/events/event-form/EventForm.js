@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { v4 as uuid } from 'uuid';
-import EventItem from "../event-item/EventItem";
+import { v4 as uuid } from "uuid";
+import EventItem from '../event-item/EventItem';
 
 const today = new Date();
 
@@ -84,7 +84,7 @@ function EventForm({ onCreatedEvent }) {
     e.preventDefault();
 
     if (isValid()) {
-      onCreatedEvent({...event, id: uuid() });
+      onCreatedEvent({ ...event, id: uuid() });
       setState(initialState);
     }
   };
@@ -92,6 +92,9 @@ function EventForm({ onCreatedEvent }) {
   const { event, errors } = state;
   return (
     <div>
+      <div>
+        <EventItem {...state.event} />
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label">Title</label>
@@ -119,8 +122,11 @@ function EventForm({ onCreatedEvent }) {
           />
           {errors.date && <div className="invalid-feedback">{errors.date}</div>}
         </div>
-        <div className="mb-3">
-          <label className="form-label">Poster</label>
+        <div className="mb-3 d-flex align-items-center">
+          <div>
+            <label className="form-label">Poster</label>
+          </div>
+          <div>
           <input
             type="text"
             className={`form-control ${errors.poster ? "is-invalid" : ""}`}
@@ -132,14 +138,15 @@ function EventForm({ onCreatedEvent }) {
           {errors.poster && (
             <div className="invalid-feedback">{errors.poster}</div>
           )}
+          </div>
+          <button
+            className="btn btn-outline-secondary"
+            type="submit"
+            disabled={!isValid()}
+          >
+            Create Event
+          </button>
         </div>
-        <button
-          className="btn btn-outline-secondary"
-          type="submit"
-          disabled={!isValid()}
-        >
-          Create Event
-        </button>
       </form>
     </div>
   );
@@ -148,6 +155,5 @@ function EventForm({ onCreatedEvent }) {
 EventForm.defaultProps = {
   onCreatedEvent: () => {},
 };
-
 
 export default EventForm;

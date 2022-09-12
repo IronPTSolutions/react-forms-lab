@@ -2,11 +2,12 @@ import React from "react";
 import moment from "moment";
 import "./EventItem.css";
 
-function EventItem({ title, poster, date, onDeletedEvent, id }) {
+function EventItem({ title, poster, date, onDeletedEvent, id, onChangeColor, liked }) {
   const handleDeleteEvent = () => onDeletedEvent(id);
+  const handleChangeColor = () => onChangeColor(id);
 
   return (
-    <div className='event'>
+    <div className="event">
       <div className="position-relative">
         <img src={poster} alt={title} className="container-img" />
         <div>
@@ -20,9 +21,17 @@ function EventItem({ title, poster, date, onDeletedEvent, id }) {
               onClick={handleDeleteEvent}
             />
           </div>
+          <div className="like position-absolute">
+            <i
+              className={`fa fa-heart like ${liked ? 'text-danger' : 'text-light'}`}
+              aria-hidden="true"
+              role="button"
+              onClick={handleChangeColor}
+            />
+          </div>
         </div>
       </div>
-      <h3 className="fw-lighter mt-4">{title}</h3>
+      <h3 className="fw-lighter mt-2">{title}</h3>
     </div>
   );
 }

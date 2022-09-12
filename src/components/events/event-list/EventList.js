@@ -11,8 +11,20 @@ function EventList() {
       return [...events, event];
     });
   };
+  
   const handleDeleteEvent = (id) =>
     setEvents((events) => events.filter((event) => event.id !== id));
+
+  const handleChangeColor = (id) =>
+    setEvents((events) => {
+      return events.map((event) => {
+        event = { ...event };
+        if (event.id === id) {
+          event.liked = !event.liked;
+        }
+        return event;
+      });
+    });
 
   return (
     <div>
@@ -23,7 +35,11 @@ function EventList() {
       <div className="d-flex justify-content-start">
         {events.map((event) => (
           <div className="col" key={event.id}>
-            <EventItem {...event} onDeletedEvent={handleDeleteEvent} />
+            <EventItem
+              {...event}
+              onDeletedEvent={handleDeleteEvent}
+              onChangeColor={handleChangeColor}
+            />
           </div>
         ))}
       </div>
