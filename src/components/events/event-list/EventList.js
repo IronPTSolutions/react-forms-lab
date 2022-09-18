@@ -1,12 +1,13 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import EventForm from "../event-form/EventForm";
 import EventItem from "../event-item/EventItem";
 import eventData from "../../../data/event";
 
 function EventList() {
-  const [events, setEvents] = useState(eventData);
+  const [events, setEvents] = useState([]);
 
-
+  useEffect(() => setEvents(eventData), []);
+  console.log(eventData)
 
   const handleCreatedEvent = (event) => {
     setEvents((events) => {
@@ -18,11 +19,15 @@ function EventList() {
     setEvents((events) => [...events].filter((event) => event.id !== id))
   }
 
-  const handleLikeEvent = (id) => {
-    setEvents((events) => {
-      return [...events]
+  const handleLikeEvent =  (id) => setEvents((events) => {
+    return events.map((event) => {
+      event = {...event};
+      if (event.id === id) {
+        event.liked = !event.liked;
+      }
+      return event;
     })
-  }
+  });
 
   return (
     <>
