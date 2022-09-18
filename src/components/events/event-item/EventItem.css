@@ -1,0 +1,15 @@
+.date {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+.delete-button {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+.hearth-button {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+}
